@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!--    Optional CSS - any custom CSS needs to go here so that it overwrites bootstrap-->
+
+
+
+
+
+
+
+    <title>Welcome, Dungeoneer</title>
+
+
+</head>
+<body class="m-2 p-2">
+<h1 class="">Welcome to the DnD Companion</h1>
+<container class="m-2 p-2">
+<form name="character"><br>
+    <br>
+    <p>My character is a <select class="form-select" aria-label="Select a Class" id="pcClass">
+        <option selected>Custom/Homebrew</option>
+        <option>Artificer</option>
+        <option>Barbarian</option>
+        <option>Bard</option>
+        <option>Cleric</option>
+        <option>Druid</option>
+        <option>Fighter</option>
+        <option>Monk</option>
+        <option>Paladin</option>
+        <option>Ranger</option>
+        <option>Rogue</option>
+        <option>Sorcerer</option>
+        <option>Warlock</option>
+        <option>Wizard</option>
+        <option>Artificer</option>
+        <option>Blood Hunter</option>
+    </select> at level <select class="form-select" aria-label="Select a Level" id="pcLevel">
+        <option selected>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+    </select>. That means my proficiency bonus is: <strong id="profBonus"></strong> </p><br>
+    <br>
+    <div><p>My character is a <select class="form-select" aria-label="Select a Race" id="pcRace"><option selected>Human</option><option>Dragonborn</option><option>Dwarf</option><option>Elf</option><option>Gnome</option><option>Half-Elf</option><option>Half-Orc</option><option>Halfling</option><option>Tiefling</option></select>
+
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="dontAddRacialModifierToggle" name="radio-stacked" required aria-selected="true">
+        <label class="custom-control-label" for="dontAddRacialModifierToggle">Do NOT add the racial modifiers for <span id="pcRaceMirror">my race choice</span> to my attributes.</label>
+    </div>
+    <div class="custom-control custom-radio mb-3">
+        <input type="radio" class="custom-control-input" id="addRacialModifierToggle" name="radio-stacked" required>
+        <label class="custom-control-label" for="addRacialModifierToggle">Add my racial modifiers for <span id="pcRaceMirror2">my race choice</span> to my attributes. Warning - this will modify your base attributes.</label>
+        <div class="invalid-feedback">More example invalid feedback text</div>
+    </div>
+
+    </p>
+    </div>
+
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="character-built-tab" data-toggle="tab" href="#character-built" role="tab" aria-controls="character-built" aria-selected="true">I have a character already built</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="character-pointbuy-tab" data-toggle="tab" href="#character-pointbuy" role="tab" aria-controls="character-pointbuy" aria-selected="false">I want to build a character (point-buy)</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link " id="character-roll-tab" data-toggle="tab" href="#character-roll" role="tab" aria-controls="character-roll" aria-selected="false">I want to build a character (rolling dice)</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="character-built" role="tabpanel" aria-labelledby="character-built-tab">
+<div class="">
+<div class="d-flex">
+        <div><label for-="strinput" class="form-label">Str</label>
+            <input type="number" id="strinput" class="form-control"></div>
+
+    <div>
+        <label for-="dexinput" class="form-label">Dex</label>
+    <input type="number" id="dexinput" class="form-control"></div>
+
+<div>        <label for-="coninput" class="form-label">Con</label>
+    <input type="number" id="coninput" class="form-control"></div>
+
+        <div><label for-="intinput" class="form-label">Int</label>
+            <input type="number" id="intinput" class="form-control"></div>
+
+        <div><label for-="wisinput" class="form-label">Wis</label>
+            <input type="number" id="wisinput" class="form-control"></div>
+
+        <div><label for-="chainput" class="form-label">Cha</label>
+            <input type="number" id="chainput" class="form-control"></div>
+
+
+</div>
+
+<!--<div class="">-->
+<!--    Now pick (assigned by class and level) number of skills:-->
+
+<!--    <div>Acrobatics (Dex)</div>-->
+<!--    <div>Animal Handling (Wis)</div>-->
+<!--    <div>Arcana (Int)</div>-->
+<!--    <div>Athletics (Str)</div>-->
+<!--    <div>Deception (Cha)</div>-->
+<!--    <div>History (Int)</div>-->
+<!--    <div>Insight (Wis)</div>-->
+<!--    <div>Intimidation (Cha)</div>-->
+<!--    <div>Investigation (Int) </div>-->
+<!--    <div>Medicine (Wis)</div>-->
+<!--    <div>Nature (Int)</div>-->
+<!--    <div>Perception (Wis)</div>-->
+<!--    <div>Performance (Cha)</div>-->
+<!--    <div> Persuasion (Cha)</div>-->
+<!--    <div>Religion (Int)</div>-->
+<!--    <div>Sleight of Hand (Dex)</div>-->
+<!--    <div>Stealth (Dex)</div>-->
+<!--    <div>Survival (Wis)</div>-->
+
+<!--</div>-->
+
+</div>
+
+</div>
+
+
+
+
+    </div>
+    <div class="tab-pane fade show" id="character-pointbuy" role="tabpanel" aria-labelledby="character-pointbuy-tab">
+        <p>   My stats are Strength <select class="form-select" id="str">
+
+            <option>8</option>
+            <option>9</option>
+            <option selected>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+                </select>
+            Dexterity  <select class="form-select" aria-label="Select a Level" id="dex">
+
+                <option>8</option>
+                <option>9</option>
+                <option selected>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+
+            </select>
+
+            Constitution <select class="form-select" aria-label="Select a Level" id="con">
+
+                <option>8</option>
+                <option>9</option>
+                <option selected>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+
+            </select>
+
+            Intelligence  <select class="form-select" aria-label="Select a Level" id="int">
+
+                <option>8</option>
+                <option>9</option>
+                <option selected>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+
+            </select>
+
+            Wisdom  <select class="form-select" aria-label="Select a Level" id="wis">
+
+                <option>8</option>
+                <option>9</option>
+                <option selected>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+
+            </select>
+
+            and Charisma <select class="form-select" aria-label="Select a Level" id="cha">
+
+                <option>8</option>
+                <option>9</option>
+                <option selected>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+
+            </select></p>
+        <h4>That means I have spent <strong id="creation"></strong> points.</h4>
+    </div>
+    </div>
+
+
+    <div class="tab-pane fade show" id="character-roll" role="tabpanel" aria-labelledby="character-roll-tab">
+        <h4>I want to roll  <select class="form-select" aria-label="How many dice?" id="dice"> <option>3</option><option>4</option><option>5</option></select> for each stat and drop <span id="droppedDice">0</span>.</h4>
+
+        <p>Roll that number of dice for me<select class="form-select" aria-label="How many attribute rolls?" id="attributeRolls"><option>6</option><option>7</option><option>8</option></select> times and I will choose the array(s) to use.</p>
+
+        <button id="rolldice" class="btn btn-dark">Press here to roll</button>
+
+        <div class="d-flex flex-wrap justify-content-center" id="diceOutput"></div>
+
+    </div>
+</div>
+
+    Now pick <span id="numberOfSkills"> (assigned by class and level) number</span> of skills:
+    <div class="text-center">
+        <div><input type="checkbox" class="form-check-input" value="acrobatics" id="acrobatics" disabled>Acrobatics (Dex) <span id="acrobaticstext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="animalhandling" disabled>Animal Handling (Wis) <span id="animalhandlingtext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="arcana" disabled>Arcana (Int) <span id="arcanatext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="athletics" disabled> Athletics (Str) <span id="athleticstext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="deception" disabled>Deception (Cha) <span id="deceptiontext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="history" disabled>History (Int) <span id="historytext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="insight" disabled>Insight (Wis) <span id="insighttext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="intimidation" disabled>Intimidation (Cha) <span id="intimidationtext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="investigation" disabled>Investigation (Int) <span id="investigationtext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="medicine" disabled>Medicine (Wis) <span id="medicinetext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="nature" disabled>Nature (Int) <span id="naturetext"></span> </div>
+        <div><input type="checkbox" class="form-check-input" id="perception" disabled>Perception (Wis) <span id="perceptiontext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="performance" disabled>Performance (Cha) <span id="performancetext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="persuasion" disabled> Persuasion (Cha) <span id="persuasiontext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="religion" disabled>Religion (Int) <span id="religiontext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="sleightofhand" disabled>Sleight of Hand (Dex) <span id="sleightofhandtext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="stealth" disabled>Stealth (Dex) <span id="stealthtext"></span></div>
+        <div><input type="checkbox" class="form-check-input" id="survival" disabled>Survival (Wis) <span id="survivaltext"></span></div>
+
+    </div>
+</form>
+</container>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!--Font Awesome, for icons - although not necessary to use bootstrap.-->
+<script src="https://kit.fontawesome.com/d97a27eb03.js" crossorigin="anonymous"></script>
+
+<script src="js/diceroller.js"></script>
+</body>
+</html>
