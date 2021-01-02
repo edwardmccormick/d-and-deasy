@@ -10,7 +10,7 @@ document.addEventListener("dragstart", function(event) {
     // Change the opacity of the draggable element
     event.target.style.opacity = "0.4";
     event.target.style.border = "3px dotted red";
-});
+    /* event.target.innerHTML = */});
 
 // While dragging the p element, change the color of the output text
 document.addEventListener("drag", function(event) {
@@ -100,13 +100,13 @@ function diceCards(e) {
     for (var i = 1; i <= attributeRolls.value; i++) {
         var output = rolls(diceToRoll.value, 6)
         // diceOutput.innerHTML += "Array number " + i +" is: " + output + ". Discarding the lowest roll: " + idLowest(output, parseInt(diceToDrop.innerText)) + ". The total for this array is: " + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ ".<br>"
-        var html = '<div className="card border border-dark" class="col-3" draggable="true">'
+        var html = '<div className="card border border-dark" class="col-3" id="'+i+'">'
         html += '<div className="card-body">'
         html +=  '<h5 className="card-title">Attribute Roll Number ' + i + '</h5>'
 
-        if (diceToRoll.value == 5 ) {html +=  '<p className="card-text">The output of these rolls are: ' + output + '. The lowest rolls are: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping those from your total. The total for your rolls are: <strong>' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</strong>.</p></div></div>'}
-        if (diceToRoll.value == 4 ) {html +=  '<p className="card-text">The output of these rolls are: ' + output + '. The lowest roll: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping that from your total. The total for these rolls are: <strong>' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</strong>.</p></div></div>'}
-        if (diceToRoll.value == 3) {html +=  '<p className="card-text">The output of this array is: ' + output + '. You only rolled three dice, so no dice to drop. The total for these rolls is: <strong id="' + i +'">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</strong>.</p></div></div>'}
+        if (diceToRoll.value == 5 ) {html +=  '<p className="card-text">The output of these rolls are: ' + output + '. The lowest rolls are: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping those from your total. The total for your rolls are: <h4><span class="badge badge-primary" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
+        if (diceToRoll.value == 4 ) {html +=  '<p className="card-text">The output of these rolls are: ' + output + '. The lowest roll: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping that from your total. The total for these rolls are: <h4><span class="badge badge-primary" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
+        if (diceToRoll.value == 3) {html +=  '<p className="card-text">The output of this array is: ' + output + '. You only rolled three dice, so no dice to drop. The total for these rolls is: <h4><span class="badge badge-primary" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</div></p></div></div>'}
         diceOutput.innerHTML += html
     }
 }
