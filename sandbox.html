@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
+
+    <!--    Optional CSS - any custom CSS needs to go here so that it overwrites bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/sandbox.css">
+
+    <title>Sandbox is Sandbox-y</title>
+
+
 </head>
+
 <body>
-$END$
+
+<p>Drag the p element back and forth between the two rectangles:</p>
+
+<div class="droptarget">
+    <p draggable="true" id="dragtarget">Drag me!</p>
+</div>
+
+<div class="droptarget"></div>
+
+<p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+<p id="demo"></p>
+
+<div id="character-roll" role="tabpanel" aria-labelledby="character-roll-tab">
+    <h4>I want to roll  <select class="form-select" aria-label="How many dice?" id="dice"> <option>3</option><option>4</option><option>5</option></select> for each stat and drop <span id="droppedDice">0</span>.</h4>
+
+    <p>Roll that number of dice for me<select class="form-select" aria-label="How many attribute rolls?" id="attributeRolls"><option>6</option><option>7</option><option>8</option></select> times and I will choose the array(s) to use.</p>
+
+    <button id="rolldice" class="btn btn-dark">Press here to roll</button>
+
+    <div class="d-flex flex-wrap justify-content-center" id="diceOutput"></div>
+
+</div>
+</div>
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
+<!--Font Awesome, for icons - although not necessary to use bootstrap.-->
+<script src="https://kit.fontawesome.com/d97a27eb03.js" crossorigin="anonymous"></script>
+<!--<script src="js/diceroller.js"></script>-->
+<script src="js/sandbox.js"></script>
+
 </body>
 </html>
