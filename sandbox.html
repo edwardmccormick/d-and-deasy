@@ -21,40 +21,86 @@
 
 <body>
 
-<p>Drag the p element back and forth between the two rectangles:</p>
+<!--<p>Drag the p element back and forth between the two rectangles:</p>-->
 
-<div class="droptarget">
-    <p draggable="true" id="dragtarget">Drag me!</p>
-</div>
+<!--<div class="droptarget">-->
+<!--    <p draggable="true" id="dragtarget">Drag me!</p>-->
+<!--</div>-->
 
-<div class="droptarget"></div>
-
-<p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
-
-<p id="demo"></p>
-
+<!--<div class="droptarget"></div>-->
 
 <div class="d-flex">
-    <div><label for-="strinput" class="form-label">Str</label>
-        <input type="number" id="strinput" class="form-control droptarget"></div>
+    <div><label for-="strDisplay" class="form-label">Str</label>
+        <input type="number" id="strDisplay" class="form-control" disabled></div>
 
     <div>
-        <label for-="dexinput" class="form-labe">Dex</label>
-        <input type="number" id="dexinput" class="form-control droptarget"></div>
+        <label for-="dexDisplay" class="form-label">Dex</label>
+        <input type="number" id="dexDisplay" class="form-control" disabled></div>
 
-    <div>        <label for-="coninput" class="form-label">Con</label>
-        <input type="number" id="coninput" class="form-control droptarget"></div>
+    <div>        <label for-="conDisplay" class="form-label">Con</label>
+        <input type="number" id="conDisplay" class="form-control" disabled></div>
 
-    <div><label for-="intinput" class="form-label">Int</label>
-        <input type="number" id="intinput" class="form-control droptarget"></div>
+    <div><label for-="intDisplay" class="form-label">Int</label>
+        <input type="number" id="intDisplay" class="form-control" disabled></div>
 
-    <div><label for-="wisinput" class="form-label">Wis</label>
-        <input type="number" id="wisinput" class="form-control droptarget"></div>
+    <div><label for-="wisDisplay" class="form-label">Wis</label>
+        <input type="number" id="wisDisplay" class="form-control" disabled></div>
 
-    <div><label for-="chainput" class="form-label">Cha</label>
-        <input type="number" id="chainput" class="form-control droptarget"></div>
+    <div><label for-="chaDisplay" class="form-label">Cha</label>
+        <input type="number" id="chaDisplay" class="form-control" disabled></div>
 
 
+</div>
+
+<div class="d-flex">
+    <div><label for-="strTyped" class="form-label">Str</label>
+        <input type="number" id="strTyped" class="form-control"></div>
+
+    <div>
+        <label for-="dexTyped" class="form-label">Dex</label>
+        <input type="number" id="dexTyped" class="form-control"></div>
+
+    <div>        <label for-="conTyped" class="form-label">Con</label>
+        <input type="number" id="conTyped" class="form-control"></div>
+
+    <div><label for-="intTyped" class="form-label">Int</label>
+        <input type="number" id="intTyped" class="form-control"></div>
+
+    <div><label for-="wisTyped" class="form-label">Wis</label>
+        <input type="number" id="wisTyped" class="form-control"></div>
+
+    <div><label for-="chaTyped" class="form-label">Cha</label>
+        <input type="number" id="chaTyped" class="form-control"></div>
+
+    <button id="finalizetyped" class="btn btn-dark align-self-end">Save your character stats.</button>
+
+
+</div>
+
+
+<div class="d-flex flex-wrap">
+    <div>
+        <div id="strinput" class="droptarget">Str</div></div>
+
+    <div>
+
+        <div id="dexinput" class="droptarget">Dex</div></div>
+
+    <div>
+        <div id="coninput" class="droptarget">Con</div></div>
+
+    <div>
+        <div id="intinput" class="droptarget">Int</div></div>
+
+    <div>
+        <div id="wisinput" class="droptarget">Wis</div></div>
+
+    <div>
+        <div id="chainput" class="droptarget">Cha</div></div>
+
+    <button id="finalizeassign" class="btn btn-dark align-self-center">Save your character stats.</button>
+
+    <p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions. If using those browsers, you must type your roll results in above.</p>
 </div>
 
 
