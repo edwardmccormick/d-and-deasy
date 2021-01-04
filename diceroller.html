@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 
     <!--    Optional CSS - any custom CSS needs to go here so that it overwrites bootstrap-->
     <link rel="stylesheet" href="css/diceroller.css">
@@ -26,7 +27,7 @@
 <container class="m-2 p-2">
 <form name="character"><br>
     <br>
-    <p>My character is a <select class="form-select" aria-label="Select a Class" id="pcClass">
+    <p>My character is a <select class="form-select w-25" aria-label="Select a Class" id="pcClass">
         <option selected>Custom/Homebrew</option>
         <option>Artificer</option>
         <option>Barbarian</option>
@@ -43,7 +44,7 @@
         <option>Wizard</option>
         <option>Artificer</option>
         <option>Blood Hunter</option>
-    </select> at level <select class="form-select" aria-label="Select a Level" id="pcLevel">
+    </select> at level <select class="form-select w-25" aria-label="Select a Level" id="pcLevel">
         <option selected>1</option>
         <option>2</option>
         <option>3</option>
@@ -68,13 +69,10 @@
     <br>
     <div><p>My character is a <select class="form-select" aria-label="Select a Race" id="pcRace"><option selected>Human</option><option>Dragonborn</option><option>Dwarf</option><option>Elf</option><option>Gnome</option><option>Half-Elf</option><option>Half-Orc</option><option>Halfling</option><option>Tiefling</option></select>.</p>
 
-    <div class="custom-control custom-radio">
-        <input type="radio" class="custom-control-input" id="dontAddRacialModifierToggle" name="radio-stacked" required aria-selected="true">
-        <label class="custom-control-label" for="dontAddRacialModifierToggle">Do NOT add the racial modifiers for <span id="pcRaceMirror">my race choice</span> to my attributes.</label>
-    </div>
-    <div class="custom-control custom-radio mb-3">
-        <input type="radio" class="custom-control-input" id="addRacialModifierToggle" name="radio-stacked" required>
-        <label class="custom-control-label" for="addRacialModifierToggle">Add my racial modifiers for <span id="pcRaceMirror2">my race choice</span> to my attributes. Warning - this will modify your base attributes.</label>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="addRacialModifierToggle">
+        <label class="form-check-label" for="addRacialModifierToggle">Add my racial modifiers for <span id="pcRaceMirror2">my race choice</span> to my attributes. Warning - this will modify your base attributes.</label>
+        </div>
         <div class="invalid-feedback">More example invalid feedback text</div>
     </div>
 Your current stats are:
@@ -107,13 +105,13 @@ Your current stats are:
 
 <ul class="nav nav-tabs " id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="character-built-tab" data-toggle="tab" href="#character-built" role="tab" aria-controls="character-built" aria-selected="true">I have a character already built</a>
+        <a class="nav-link active" id="character-built-tab" data-bs-toggle="tab" href="#character-built" role="tab" aria-controls="character-built" aria-selected="true">I have a character already built</a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link" id="character-pointbuy-tab" data-toggle="tab" href="#character-pointbuy" role="tab" aria-controls="character-pointbuy" aria-selected="false">I want to build a character (point-buy)</a>
+        <a class="nav-link" id="character-pointbuy-tab" data-bs-toggle="tab" href="#character-pointbuy" role="tab" aria-controls="character-pointbuy" aria-selected="false">I want to build a character (point-buy)</a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link " id="character-roll-tab" data-toggle="tab" href="#character-roll" role="tab" aria-controls="character-roll" aria-selected="false">I want to build a character (rolling dice)</a>
+        <a class="nav-link " id="character-roll-tab" data-bs-toggle="tab" href="#character-roll" role="tab" aria-controls="character-roll" aria-selected="false">I want to build a character (rolling dice)</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -267,7 +265,7 @@ Your current stats are:
 </div>
 <br>
 <br>
-    Now pick <span id="numberOfSkills"> (assigned by class and level) number</span> of skills:
+    Now pick <span id="numberOfSkills"> (assigned by class and level) number</span> from the available skills:
     <div class="text-center">
         <div><input type="checkbox" class="form-check-input" value="acrobatics" id="acrobatics" disabled>Acrobatics (Dex) <span id="acrobaticstext"></span></div>
         <div><input type="checkbox" class="form-check-input" id="animalhandling" disabled>Animal Handling (Wis) <span id="animalhandlingtext"></span></div>
@@ -295,8 +293,9 @@ Your current stats are:
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
 <!--Font Awesome, for icons - although not necessary to use bootstrap.-->
 <script src="https://kit.fontawesome.com/d97a27eb03.js" crossorigin="anonymous"></script>
 

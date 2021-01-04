@@ -69,14 +69,6 @@ function rolls(x,y) {
     return output
 }
 
-function dropLowest(output,z) {
-    for (var i=0; i<z; i++) {
-        output.splice(output.indexOf(Math.min(...output)),1)
-    }
-    return output
-
-}
-
 function idLowest(output,z) {
     var lowest = []
     for (var i=0; i<z; i++) {
@@ -85,18 +77,17 @@ function idLowest(output,z) {
     return lowest
 }
 
-function sumOfAttributeRoll(x) {
-    return x[0] + x[1] + x[2];
-}
-
 // so to roll 4d6 drop lowest rolls(4,6,1) will generate an array, and then results.reduce(function(total,num) {return total += num},0) will return the total of the three rolls
+
+var profBonus = 2;
+
 function calculateProf() {
    if (parseInt(document.getElementById('pcLevel').value) > 16) {profBonus = 6}
     else if (parseInt(document.getElementById('pcLevel').value) > 12) {profBonus = 5}
    else if (parseInt(document.getElementById('pcLevel').value) > 8) {profBonus = 4}
    else if (parseInt(document.getElementById('pcLevel').value) > 4) {profBonus = 3}
    else if (parseInt(document.getElementById('pcLevel').value) <= 4) {profBonus = 2}
-    proficiencyBonus.innerHTML = "+ " + profBonus;
+    document.getElementById('profBonus').innerHTML = "+ " + profBonus;
 }
 
 // function updateCharacter() {
@@ -124,7 +115,7 @@ function pointBuyCreation() {
     pointTotals.innerHTML = characterCost + "/" + characterCostGoal;
 }
 
-var profBonus = 2;
+
 
 var character = {};
 
@@ -158,6 +149,10 @@ var wizardskills = [2, "arcana", "history", "insight", "investigation", "medicin
 
 var allSkills = ["as many as delineated in the homebrew class", "acrobatics", "animalhandling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "perception", "performance", "persuasion", "religion", "sleightofhand", "stealth", "survival"]
 
+var skillsToPick
+
+var skillsPicked = 0
+
 function parseSkills() {
     for (var i = 1; i < allSkills.length; i++) {
         document.getElementById(allSkills[i]).disabled = true;
@@ -180,7 +175,8 @@ function parseSkills() {
     for (var i = 1; i < y.length; i++) {
         document.getElementById(y[i]).disabled = false;
     }
-document.getElementById('numberOfSkills').innerHTML = "<strong> " + y[0] + " </strong>"
+    skillsToPick = y[0]
+document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>"
 }
 
 function onlyRollThree() {
@@ -198,9 +194,9 @@ function diceCards(e) {
         html += '<div class="card-body">'
         html +=  '<h5 class="card-title">Attribute Roll Number ' + i + '</h5>'
 
-        if (diceToRoll.value == 5 ) {html +=  '<p class="card-text">The output of these rolls are: ' + output + '. The lowest rolls are: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping those from your total. The total for your rolls are: <h4><span class="badge badge-primary text-center" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
-        if (diceToRoll.value == 4 ) {html +=  '<p class="card-text">The output of these rolls are: ' + output + '. The lowest roll: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping that from your total. The total for these rolls are: <h4><span class="badge badge-primary text-center" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
-        if (diceToRoll.value == 3) {html +=  '<p className="card-text">The output of this array is: ' + output + '. You only rolled three dice, so no dice to drop. The total for these rolls is: <h4><span class="badge badge-primary text-center" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</div></p></div></div>'}
+        if (diceToRoll.value == 5 ) {html +=  '<p class="card-text">The output of these rolls are: ' + output + '. The lowest rolls are: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping those from your total. The total for your rolls are: <h4><span class="badge bg-primary text-center" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
+        if (diceToRoll.value == 4 ) {html +=  '<p class="card-text">The output of these rolls are: ' + output + '. The lowest roll: ' + idLowest(output, parseInt(diceToDrop.innerText)) + '; dropping that from your total. The total for these rolls are: <h4><span ' + 'class="badge bg-primary text-center" ' + 'id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</p></div></div>'}
+        if (diceToRoll.value == 3) {html +=  '<p className="card-text">The output of this array is: ' + output + '. You only rolled three dice, so no dice to drop. The total for these rolls is: <h4><span class="badge bg-primary text-center" id="total' + i +'" draggable="true">' + (parseInt(output[0]) + parseInt(output[1]) + parseInt(output [2]) )+ '</span></h4>.</div></p></div></div>'}
         diceOutput.innerHTML += html
     }
     strRollInput.innerHTML = 'Str';
@@ -248,6 +244,7 @@ function showCharacterStats() {
     var skills = [acrobatics, animalhandling, arcana, athletics, deception, historySkill, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion,sleightOfHand, stealth, survival]
     var skillstext = [acrobaticsText, animalhandlingText, arcanaText, athleticsText, deceptionText, historySkillText, insightText, intimidationText, investigationText, medicineText, natureText, perceptionText, performanceText, persuasionText, religionText, sleightOfHandText, stealthText, survivalText]
     var skillAttribute = [character.dexterity, character.wisdom, character.intelligence, character.strength, character.charisma, character.intelligence, character.wisdom, character.charisma, character.intelligence, character.wisdom, character.intelligence, character.wisdom, character.charisma, character.charisma, character.intelligence, character.dexterity, character.dexterity, character.wisdom]
+    var count = 0
     strDisplay.value = character.strength;
     dexDisplay.value = character.dexterity;
     conDisplay.value = character.constitution;
@@ -255,7 +252,7 @@ function showCharacterStats() {
     wisDisplay.value = character.wisdom;
     chaDisplay.value = character.charisma;
     for (var i = 0; i < skills.length; i++) {
-        var count = 0
+
         if (attributeModifier(skillAttribute[i]) < 0){
         if (skills[i].checked === false) {skillstext[i].innerHTML = "<strong>" + attributeModifier(skillAttribute[i]) + "</strong>"};
         if (skills[i].checked === true) {skillstext[i].innerHTML = "<strong>" + (parseInt(attributeModifier(skillAttribute[i])) + parseInt(profBonus)) + "</strong>";
@@ -269,12 +266,14 @@ function showCharacterStats() {
         }
 
     }
-    // document.getElementById('numberOfSkills').innerHTML = "<strong>" + (parseInt(getElementById('numberOfSkills').innerText) - count) + "</strong>"
+    skillsPicked = count
+    document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>"
 }
 
 function attributeModifier (x) {
     return Math.floor((x-10)/2)
 }
+calculateProf()
 
 var proficiencyBonus = document.getElementById('profBonus');
 var characterLevel = document.getElementById('pcLevel');
@@ -380,4 +379,21 @@ typedFinalize.addEventListener('click', typeCharacterFinalize)
 pointBuyFinalize.addEventListener('click', pointBuyCharacterFinalize)
 
 //Here are all the listeners for the skills
-// acrobatics.addEventListener('change')
+acrobatics.addEventListener('click',showCharacterStats)
+animalhandling.addEventListener('click',showCharacterStats)
+arcana.addEventListener('click', showCharacterStats)
+athletics.addEventListener('change', showCharacterStats)
+deception.addEventListener('change', showCharacterStats)
+historySkill.addEventListener('change', showCharacterStats)
+insight.addEventListener('change',showCharacterStats)
+intimidation.addEventListener('change', showCharacterStats)
+investigation.addEventListener('change', showCharacterStats)
+medicine.addEventListener('change', showCharacterStats)
+nature.addEventListener('change', showCharacterStats)
+perception.addEventListener('change', showCharacterStats)
+performance.addEventListener('change', showCharacterStats)
+persuasion.addEventListener('change', showCharacterStats)
+religion.addEventListener('change', showCharacterStats)
+sleightOfHand.addEventListener('change', showCharacterStats)
+stealth.addEventListener('change', showCharacterStats)
+survival.addEventListener('change', showCharacterStats)
