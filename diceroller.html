@@ -27,7 +27,7 @@
 <container class="m-2 p-2">
 <form name="character"><br>
     <br>
-    <p>My character is a <select class="form-select w-25" aria-label="Select a Class" id="pcClass">
+    <p>My character is a <select class="form-select d-inline" aria-label="Select a Class" id="pcClass">
         <option selected>Custom/Homebrew</option>
         <option>Artificer</option>
         <option>Barbarian</option>
@@ -44,7 +44,7 @@
         <option>Wizard</option>
         <option>Artificer</option>
         <option>Blood Hunter</option>
-    </select> at level <select class="form-select w-25" aria-label="Select a Level" id="pcLevel">
+    </select> at level <select class="form-select d-inline" aria-label="Select a Level" id="pcLevel">
         <option selected>1</option>
         <option>2</option>
         <option>3</option>
@@ -67,7 +67,7 @@
         <option>20</option>
     </select>. That means my proficiency bonus is: <strong id="profBonus"></strong> </p><br>
     <br>
-    <div><p>My character is a <select class="form-select" aria-label="Select a Race" id="pcRace"><option selected>Human</option><option>Dragonborn</option><option>Dwarf</option><option>Elf</option><option>Gnome</option><option>Half-Elf</option><option>Half-Orc</option><option>Halfling</option><option>Tiefling</option></select>.</p>
+    <div><p>My character is a <select class="form-select d-inline" aria-label="Select a Race" id="pcRace"><option selected>Human</option><option>Dragonborn</option><option>Dwarf</option><option>Elf</option><option>Gnome</option><option>Half-Elf</option><option>Half-Orc</option><option>Halfling</option><option>Tiefling</option></select>.</p>
 
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="addRacialModifierToggle">
@@ -253,9 +253,9 @@ Your current stats are:
         </div>
         <br>
         <br>
-        <h4>I want to roll  <select class="form-select" aria-label="How many dice?" id="dice"> <option>3</option><option>4</option><option>5</option></select> for each stat and drop <span id="droppedDice">0</span>.</h4>
+        <h4>I want to roll  <select class="form-select d-inline" aria-label="How many dice?" id="dice"> <option>3</option><option>4</option><option>5</option></select> for each stat and drop <span id="droppedDice">0</span>.</h4>
 
-        <p>Roll that number of dice for me<select class="form-select" aria-label="How many attribute rolls?" id="attributeRolls"><option>6</option><option>7</option><option>8</option></select> times and I will choose the array(s) to use.</p>
+        <p>Roll that number of dice for me<select class="form-select d-inline" aria-label="How many attribute rolls?" id="attributeRolls"><option>6</option><option>7</option><option>8</option></select> times and I will choose the array(s) to use.</p>
 
         <button id="rolldice" class="btn btn-dark">Press here to roll</button>
 
