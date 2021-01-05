@@ -4,10 +4,10 @@ A new, hopefully easy, open source method to character creation in Dungeons and 
 
 Although I enjoy Dungeons and Dragons, this is mostly an opportunity to flex some of my developer/coding skills. Building a character in DnD 5e was just the kind of task that I was looking for - mathy but not too complicated, labor intensive and easily automated, and with a clear concise beginning and end.
 
-###Things it Does
+##Things it Does
 You can create a character, with either point buy or from rolling an 'array' of attributes, see what skills each class offers, and see what the different modifiers to your skills will be at different levels.
 
-###What it doesn't do yet
+##What it doesn't do yet
 - There's no way to build a character with a 'standard array' yet, although you *could* type it into the attribute entry method.
 - You can't yet add a backround or a race to your character - rather, you can, but it doesn't 'effect' your build at all yet.
 - Attribute increases (earned at different levels for different classes) are not implemented at all. 

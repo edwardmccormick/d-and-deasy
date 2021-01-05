@@ -149,7 +149,7 @@ var wizardskills = [2, "arcana", "history", "insight", "investigation", "medicin
 
 var allSkills = ["as many as delineated in the homebrew class", "acrobatics", "animalhandling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "perception", "performance", "persuasion", "religion", "sleightofhand", "stealth", "survival"]
 
-var skillsToPick
+var skillsToPick = 0
 
 var skillsPicked = 0
 
@@ -240,6 +240,10 @@ function pointBuyCharacterFinalize(e) {
     showCharacterStats();
 }
 
+function characterNameChange() {
+    character.name = characterName.value;
+}
+
 function showCharacterStats() {
     var skills = [acrobatics, animalhandling, arcana, athletics, deception, historySkill, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion,sleightOfHand, stealth, survival]
     var skillstext = [acrobaticsText, animalhandlingText, arcanaText, athleticsText, deceptionText, historySkillText, insightText, intimidationText, investigationText, medicineText, natureText, perceptionText, performanceText, persuasionText, religionText, sleightOfHandText, stealthText, survivalText]
@@ -266,8 +270,10 @@ function showCharacterStats() {
         }
 
     }
-    skillsPicked = count
-    document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>"
+    if (count > 0) {skillsPicked = count}
+
+    document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>";
+
 }
 
 function attributeModifier (x) {
@@ -275,6 +281,7 @@ function attributeModifier (x) {
 }
 calculateProf()
 
+var characterName = document.getElementById('charactername');
 var proficiencyBonus = document.getElementById('profBonus');
 var characterLevel = document.getElementById('pcLevel');
 var characterClass = document.getElementById('pcClass');
@@ -358,9 +365,10 @@ var rollDice = document.getElementById('rolldice')
 
 var pointBuyTab = document.getElementById('character-pointbuy-tab')
 
-//This governs only the first two selections - character and level
+//This governs only the first three selections - name, class and level
+characterName.addEventListener('change', characterNameChange);
 characterLevel.addEventListener('change', calculateProf);
-characterClass.addEventListener('change', parseSkills)
+characterClass.addEventListener('change', parseSkills);
 
 //This section is for the point buy section
 strPointBuy.addEventListener('change', pointBuyCreation);
@@ -397,3 +405,8 @@ religion.addEventListener('change', showCharacterStats)
 sleightOfHand.addEventListener('change', showCharacterStats)
 stealth.addEventListener('change', showCharacterStats)
 survival.addEventListener('change', showCharacterStats)
+
+$('charactername').change(function() {
+    character.name = document.getElementById("charactername").value;
+    console.log("I'm firing from the character name!")
+})

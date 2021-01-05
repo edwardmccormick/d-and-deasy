@@ -6,6 +6,6 @@
     padding: 10px;
     border: 1px solid #aaaaaa;
 }
-#pcClass, #pcLevel, #pcRace, #dice, #attributeRolls {
+#pcClass, #pcLevel, #pcRace, #pcBackground, #dice, #attributeRolls, .auto {
     width: auto;
 }
