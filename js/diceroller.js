@@ -149,6 +149,8 @@ var wizardskills = [2, "arcana", "history", "insight", "investigation", "medicin
 
 var allSkills = ["as many as delineated in the homebrew class", "acrobatics", "animalhandling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "perception", "performance", "persuasion", "religion", "sleightofhand", "stealth", "survival"]
 
+var acolyte = [2, "insight", "religion"]
+
 var skillsToPick = 0
 
 var skillsPicked = 0
@@ -177,6 +179,23 @@ function parseSkills() {
     }
     skillsToPick = y[0]
 document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>"
+}
+
+function parseBackground() {
+    if (characterBackground.value == "Acolyte") {
+        for (var i = 1; i < acolyte.length; i++) {
+            console.log("The loop ran " + i)
+            if (acolyte[i].checked === true) {
+                ++skillsToPick;
+                showCharacterStats()
+            } else {
+                acolyte[i].checked = true
+            }
+        }
+    }
+    if (characterBackground.value == "Custom") {
+        skillsToPick += 2;
+    }
 }
 
 function onlyRollThree() {
@@ -245,9 +264,65 @@ function characterNameChange() {
 }
 
 function showCharacterStats() {
-    var skills = [acrobatics, animalhandling, arcana, athletics, deception, historySkill, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion,sleightOfHand, stealth, survival]
+    var skills = [acrobatics, animalhandling, arcana, athletics, deception, historySkill, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
     var skillstext = [acrobaticsText, animalhandlingText, arcanaText, athleticsText, deceptionText, historySkillText, insightText, intimidationText, investigationText, medicineText, natureText, perceptionText, performanceText, persuasionText, religionText, sleightOfHandText, stealthText, survivalText]
     var skillAttribute = [character.dexterity, character.wisdom, character.intelligence, character.strength, character.charisma, character.intelligence, character.wisdom, character.charisma, character.intelligence, character.wisdom, character.intelligence, character.wisdom, character.charisma, character.charisma, character.intelligence, character.dexterity, character.dexterity, character.wisdom]
+
+    if (characterClass.value === "Artificer") {
+        var y = artificerskills
+    }
+    ;
+    if (characterClass.value === "Barbarian") {
+        var y = barbarianskills
+    }
+    ;
+    if (characterClass.value === "Bard") {
+        var y = bardskills
+    }
+    ;
+    if (characterClass.value === "Cleric") {
+        var y = clericskills
+    }
+    if (characterClass.value === "Druid") {
+        var y = druidskills
+    }
+    ;
+    if (characterClass.value === "Fighter") {
+        var y = fighterskills
+    }
+    ;
+    if (characterClass.value === "Monk") {
+        var y = monkskills
+    }
+    ;
+    if (characterClass.value === "Paladin") {
+        var y = paladinskills
+    }
+    ;
+    if (characterClass.value === "Ranger") {
+        var y = rangerskills
+    }
+    ;
+    if (characterClass.value === "Rogue") {
+        var y = rogueskills
+    }
+    ;
+    if (characterClass.value === "Sorcerer") {
+        var y = sorcererskills
+    }
+    ;
+    if (characterClass.value === "Warlock") {
+        var y = warlockskills
+    }
+    ;
+    if (characterClass.value === "Wizard") {
+        var y = wizardskills
+    }
+    ;
+    if (characterClass.value === "Custom/Homebrew") {
+        var y = allSkills
+    }
+
     var count = 0
     strDisplay.value = character.strength;
     dexDisplay.value = character.dexterity;
@@ -257,23 +332,37 @@ function showCharacterStats() {
     chaDisplay.value = character.charisma;
     for (var i = 0; i < skills.length; i++) {
 
-        if (attributeModifier(skillAttribute[i]) < 0){
-        if (skills[i].checked === false) {skillstext[i].innerHTML = "<strong>" + attributeModifier(skillAttribute[i]) + "</strong>"};
-        if (skills[i].checked === true) {skillstext[i].innerHTML = "<strong>" + (parseInt(attributeModifier(skillAttribute[i])) + parseInt(profBonus)) + "</strong>";
-        count++
-        }
-        }
-        else {
-            if (skills[i].checked === false) {skillstext[i].innerHTML = "<strong> +" + attributeModifier(skillAttribute[i]) + "</strong>"};
-            if (skills[i].checked === true) {skillstext[i].innerHTML = "<strong> +" + (parseInt(attributeModifier(skillAttribute[i])) + parseInt(profBonus)) + "</strong>";
-            count++}
+        if (attributeModifier(skillAttribute[i]) < 0) {
+            if (skills[i].checked === false) {
+                skillstext[i].innerHTML = "<strong>" + attributeModifier(skillAttribute[i]) + "</strong>"
+            }
+
+            if (skills[i].checked === true) {
+                skillstext[i].innerHTML = "<strong>" + (parseInt(attributeModifier(skillAttribute[i])) + parseInt(profBonus)) + "</strong>";
+                count++
+            }
+        } else {
+            if (skills[i].checked === false) {
+                skillstext[i].innerHTML = "<strong> +" + attributeModifier(skillAttribute[i]) + "</strong>"
+            }
+            ;
+            if (skills[i].checked === true) {
+                skillstext[i].innerHTML = "<strong> +" + (parseInt(attributeModifier(skillAttribute[i])) + parseInt(profBonus)) + "</strong>";
+                count++
+            }
         }
 
     }
-    if (count > 0) {skillsPicked = count}
+    if (count > 0) {
+        skillsPicked = count
+    }
 
     document.getElementById('numberOfSkills').innerHTML = "<strong> " + skillsPicked + " of " + skillsToPick + " </strong>";
-
+    if (skillsToPick > y[0]) {
+        for (var i = 1; i < allSkills.length; i++) {
+            document.getElementById(allSkills[i]).disabled = false;
+        }
+    } else {parseSkills()}
 }
 
 function attributeModifier (x) {
@@ -285,12 +374,13 @@ var characterName = document.getElementById('charactername');
 var proficiencyBonus = document.getElementById('profBonus');
 var characterLevel = document.getElementById('pcLevel');
 var characterClass = document.getElementById('pcClass');
-var strDisplay = document.getElementById('strDisplay')
-var dexDisplay = document.getElementById('dexDisplay')
-var conDisplay = document.getElementById('conDisplay')
-var intDisplay = document.getElementById('intDisplay')
-var wisDisplay = document.getElementById('wisDisplay')
-var chaDisplay = document.getElementById('chaDisplay')
+var characterBackground = document.getElementById('pcBackground');
+var strDisplay = document.getElementById('strDisplay');
+var dexDisplay = document.getElementById('dexDisplay');
+var conDisplay = document.getElementById('conDisplay');
+var intDisplay = document.getElementById('intDisplay');
+var wisDisplay = document.getElementById('wisDisplay');
+var chaDisplay = document.getElementById('chaDisplay');
 
 var strTyped = document.getElementById('strTyped');
 var dexTyped = document.getElementById('dexTyped');
@@ -369,6 +459,7 @@ var pointBuyTab = document.getElementById('character-pointbuy-tab')
 characterName.addEventListener('change', characterNameChange);
 characterLevel.addEventListener('change', calculateProf);
 characterClass.addEventListener('change', parseSkills);
+characterBackground.addEventListener('change', parseBackground);
 
 //This section is for the point buy section
 strPointBuy.addEventListener('change', pointBuyCreation);
@@ -405,8 +496,3 @@ religion.addEventListener('change', showCharacterStats)
 sleightOfHand.addEventListener('change', showCharacterStats)
 stealth.addEventListener('change', showCharacterStats)
 survival.addEventListener('change', showCharacterStats)
-
-$('charactername').change(function() {
-    character.name = document.getElementById("charactername").value;
-    console.log("I'm firing from the character name!")
-})
